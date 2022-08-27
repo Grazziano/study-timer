@@ -27,7 +27,7 @@ export default class Form extends Component {
             max="01:30:00"
           />
         </div>
-        <Button />
+        <Button>Adicionar</Button>
       </form>
     );
   }
