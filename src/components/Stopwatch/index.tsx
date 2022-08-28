@@ -21,9 +21,8 @@ function Stopwatch({ selected }: Props) {
   return (
     <div className={style.stopwatch}>
       <p className={style.title}>Escolha um card e inicie o cronometro</p>
-      Time: {time}
       <div className={style.watchWrapper}>
-        <Watch />
+        <Watch time={time} />
       </div>
       <Button>Começar</Button>
     </div>
