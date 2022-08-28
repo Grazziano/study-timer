@@ -16,11 +16,20 @@ export default function Item({
 }: Props) {
   return (
     <li
-      className={`${style.item} ${selected ? style.selectedItem : ''}`}
-      onClick={() => selectTask({ task, time, selected, completed, id })}
+      className={`
+        ${style.item} 
+        ${selected ? style.selectedItem : ''} 
+        ${completed ? style.completedItem : ''}
+      `}
+      onClick={() =>
+        !completed && selectTask({ task, time, selected, completed, id })
+      }
     >
       <h3>{task}</h3>
       <span>{time}</span>
+      {completed && (
+        <span className={style.concluded} aria-label="completed task"></span>
+      )}
     </li>
   );
 }

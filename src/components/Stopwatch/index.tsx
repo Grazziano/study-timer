@@ -7,9 +7,10 @@ import { ITask } from '../../types/task';
 
 interface Props {
   selected: ITask | undefined;
+  finishTask: () => void;
 }
 
-function Stopwatch({ selected }: Props) {
+function Stopwatch({ selected, finishTask }: Props) {
   const [time, setTime] = useState<number>();
 
   useEffect(() => {
@@ -24,6 +25,7 @@ function Stopwatch({ selected }: Props) {
         setTime(counter - 1);
         return regressive(counter - 1);
       }
+      finishTask();
     }, 1000);
   }
 
