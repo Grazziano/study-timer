@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Button from '../Button';
 import Watch from './Watch';
 import style from './Stopwatch.module.scss';
@@ -10,15 +10,18 @@ interface Props {
 }
 
 function Stopwatch({ selected }: Props) {
-  const [time, setTime] = useState<Number>();
+  const [time, setTime] = useState<number>();
 
-  if (selected?.time) {
-    setTime(timeToSeconds(selected?.time));
-  }
+  useEffect(() => {
+    if (selected?.time) {
+      setTime(timeToSeconds(String(selected.time)));
+    }
+  }, [selected]);
 
   return (
     <div className={style.stopwatch}>
       <p className={style.title}>Escolha um card e inicie o cronometro</p>
+      Time: {time}
       <div className={style.watchWrapper}>
         <Watch />
       </div>
