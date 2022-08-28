@@ -50,7 +50,7 @@ export default class Form extends Component<{
             }
             id="time"
             min="00:00:00"
-            max="01:30:00"
+            max="23:59:59"
           />
         </div>
         <Button type="submit">Adicionar</Button>

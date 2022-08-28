@@ -1,11 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from '../Button';
 import Watch from './Watch';
 import style from './Stopwatch.module.scss';
-import { timeToSeconds } from '../../common/utils/date';
+import { timeToSeconds } from '../../common/utils/time';
+import { ITask } from '../../types/task';
 
-function Stopwatch() {
-  console.log('conversão: ', timeToSeconds('01:01:01'));
+interface Props {
+  selected: ITask | undefined;
+}
+
+function Stopwatch({ selected }: Props) {
+  const [time, setTime] = useState<Number>();
+
+  if (selected?.time) {
+    setTime(timeToSeconds(selected?.time));
+  }
 
   return (
     <div className={style.stopwatch}>
